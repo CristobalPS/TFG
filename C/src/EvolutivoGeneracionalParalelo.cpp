@@ -240,21 +240,21 @@ pair<Individuo_POO, vector<Individuo_POO>> evolutivoGeneracional(Individuo_POO &
         ordenarPoblacion(Poblacion, Poblacion);
         BEST_INDIVIDUOS.push_back(Poblacion[0]);
 
-        if(BEST_INDIVIDUOS[BEST_INDIVIDUOS.size()-2].getFitness() > Poblacion[0].getFitness()){
-            cout << "Reseteo de las épocas... " << epocas_sin_cambio << " a 0 en la iteración: " << iteraciones << endl;
-            epocas_sin_cambio = 0;
-            cout << Poblacion[0].ToString() << endl;
-        }
+        // if(BEST_INDIVIDUOS[BEST_INDIVIDUOS.size()-2].getFitness() > Poblacion[0].getFitness()){
+        //     cout << "Reseteo de las épocas... " << epocas_sin_cambio << " a 0 en la iteración: " << iteraciones << endl;
+        //     epocas_sin_cambio = 0;
+        //     cout << Poblacion[0].ToString() << endl;
+        // }
     }
 
     cout << "Búsqueda local FINAL" << endl;
-    int bl_fija = config.getBLFija();
-    config.setBLFija(0);
+    //int bl_fija = config.getBLFija();
+    // config.setBLFija(0);
     pair<Individuo_POO, vector<Individuo_POO>> valores;
     valores = busqueda_local_mejor(Poblacion[0], config, deltas, cercanias, cercanias_km, tendencias, cadena);
     Individuo_POO Minimo = valores.first;
     vector<Individuo_POO> Best_Individuo_Busqueda = valores.second;
-    config.setBLFija(bl_fija);
+    //config.setBLFija(bl_fija);
     cout << "Individuo Final" << endl << Minimo.ToString() << endl;
 
     time_t t2 = time(NULL);
