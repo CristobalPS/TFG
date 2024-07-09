@@ -198,9 +198,6 @@ void evaluarPoblacion_OMP(vector<Individuo_POO> & Poblacion, Datos_EVAL & config
             capacidades_total.push_back(Poblacion[i].getCapacidadTotal());
             usuariosPerdidos.push_back(Poblacion[i].getUsuariosPerdidos());
         }
-
-        vector<float> tendenciasIn(Poblacion.size(), 0);
-        vector<float> tendenciasOut(Poblacion.size(), 0);
     
         // Se copia una sola vez a la GPU para la evaluación
         // CAPACIDADES

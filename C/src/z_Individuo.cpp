@@ -141,19 +141,19 @@ int Individuo_POO::getNumEstaciones() const{
     return NUM_ESTACIONES;
 }
 
-int Individuo_POO::getFitness() const{
+float Individuo_POO::getFitness() const{
     return FITNESS;
 }
 
-int Individuo_POO::getKmExtra() const{
+float Individuo_POO::getKmExtra() const{
     return KM_EXTRA;
 }
 
-int Individuo_POO::getKmTendencia() const{
+float Individuo_POO::getKmTendencia() const{
     return KM_TENDENCIA;
 }
 
-int Individuo_POO::getSobrante() const{
+float Individuo_POO::getSobrante() const{
     return SOBRANTE;
 }
 

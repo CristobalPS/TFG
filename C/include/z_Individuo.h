@@ -107,17 +107,13 @@ public:
 
     int getNumEstaciones() const;
 
-    int getFitness() const;
+    float getFitness() const;
 
-    int getKmExtra() const;
+    float getKmExtra() const;
 
-    int getKmTendencia() const;
+    float getKmTendencia() const;
 
-    int getSobrante() const;
-
-    float getTendenciaEntrada() const;
-
-    float getTendenciaSalida() const;
+    float getSobrante() const;
 
     int getCapacidadTotal() const;
 

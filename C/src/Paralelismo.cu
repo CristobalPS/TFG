@@ -171,9 +171,6 @@ void evaluarPoblacion_CUDA(vector<Individuo_POO> & Poblacion, Datos_EVAL & confi
             usuariosPerdidos.push_back(Poblacion[i].getUsuariosPerdidos());
         }
 
-        //vector<float> tendenciasIn(Poblacion.size(), 0);
-        //vector<float> tendenciasOut(Poblacion.size(), 0);
-
         // Paso de variables a la GPU
         // CAPACIDADES (pasamos de matriz a vector)
         int filas_capacidades = capacidades.size();
@@ -218,19 +215,6 @@ void evaluarPoblacion_CUDA(vector<Individuo_POO> & Poblacion, Datos_EVAL & confi
         // FACTOR SOBRANTE
         int factor_sobrante_device = static_cast<int>(config.getFactorSobrante());
 
-        /*
-        // TENDENCIAS IN
-        float * tendenciasIn_device;
-        int tendenciasIn_tam = tendenciasIn.size() * sizeof(float);
-        cudaMalloc(&tendenciasIn_device, tendenciasIn_tam);
-        cudaMemcpy(tendenciasIn_device, tendenciasIn.data(), tendenciasIn_tam, cudaMemcpyHostToDevice);
-
-        // TENDENCIAS OUT
-        float * tendenciasOut_device;
-        int tendenciasOut_tam = tendenciasOut.size() * sizeof(float);
-        cudaMalloc(&tendenciasOut_device, tendenciasOut_tam);
-        cudaMemcpy(tendenciasOut_device, tendenciasOut.data(), tendenciasOut_tam, cudaMemcpyHostToDevice);
-        */
         // PLAZAS SOBRANTES
         float * plazas_sobrantes_device;
         int plazas_sobrantes_tam = plazasSobrantes.size() * sizeof(float);
@@ -274,7 +258,7 @@ void evaluarPoblacion_CUDA(vector<Individuo_POO> & Poblacion, Datos_EVAL & confi
         cuda_evaluacion<<<num_bloques, 32>>>(capacidades_device, filas_capacidades, columnas_capacidades,
                                             fitness_device, num_estaciones_device, deltas_device, factor_stress_device,
                                             por_seguridad_device, totalbicis_device, capacidades_total_device, valor_kms_device,
-                                            tendencias_device, /*tendenciasIn_device, tendenciasOut_device,*/ usuariosPerdidos_device,
+                                            tendencias_device, usuariosPerdidos_device,
                                             factor_sobrante_device, cercanias_device, cercanias_km_device, columnas_cercanias_km,
                                             costeKmsExtra_device, costeKmsTendencia_device, plazas_sobrantes_device,
                                             estaciones_llenas_device, estaciones_vacias_device, filas_deltas, columnas_deltas,
@@ -295,8 +279,6 @@ void evaluarPoblacion_CUDA(vector<Individuo_POO> & Poblacion, Datos_EVAL & confi
         cudaFree(capacidades_device);
         cudaFree(fitness_device);
         cudaFree(capacidades_total_device);
-        //cudaFree(tendenciasIn_device);
-        //cudaFree(tendenciasOut_device);
         cudaFree(plazas_sobrantes_device);
         cudaFree(costeKmsExtra_device);
         cudaFree(costeKmsTendencia_device);

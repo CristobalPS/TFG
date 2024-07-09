@@ -202,7 +202,7 @@ void lanzador(Datos_EVAL & config, vector<int> & base, string cadena){
     
     cout << "Individuo BASE " << IBase.ToString() << endl;
     IBase.evaluacion_individuo(config);
-    cout << endl << "Individuo Base Evaluado________________" << IBase.getFitness() << " Km Tendencia " << IBase.getKmTendencia() << " Km Extra " << IBase.getKmExtra() << endl;
+    cout << endl << "Individuo Base Evaluado________________" << setprecision(8) << IBase.getFitness() << " Km Tendencia " << IBase.getKmTendencia() << " Km Extra " << IBase.getKmExtra() << endl;
     vector<vector<int>> DELTAS = config.getDeltas();          // DELTAS
     vector<vector<int>> CERCANIAS = config.getCerca();        // CERCANIAS
     vector<vector<float>> CERCANIAS_KM = config.getCercaKM(); // CERCANIAS KM

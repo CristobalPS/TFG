@@ -8,6 +8,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <cstring>
+#include <iomanip>
 
 using namespace std;
 
@@ -112,7 +113,7 @@ void generarResultados(Datos_EVAL & config, Resultado & resultados, Individuo_PO
     archivo << capacidades_mejor << ",";
 
     archivo << resultados.m_individuo->getNumEstaciones() << ",";
-    archivo << resultados.m_individuo->getFitness() << ",";
+    archivo << setprecision(7) << resultados.m_individuo->getFitness() << ",";
     archivo << resultados.m_individuo->getKmExtra() << ",";
     archivo << resultados.m_individuo->getKmTendencia() << ",";
     archivo << resultados.m_individuo->getSobrante() << ",";
