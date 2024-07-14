@@ -51,7 +51,7 @@ for i in range(0, len(df), rows_per_group):
                         
                         # Crear un gráfico de calor de los resultados
                         plt.figure(figsize=(10, 8))
-                        sns.heatmap(dunn_result, annot=True, fmt=".4f", cmap="coolwarm")
+                        sns.heatmap(dunn_result, annot=True, fmt=".4f", cmap="coolwarm", annot_kws={"size": 15})
                         plt.title(f'Post-hoc de Dunn para grupo {i // rows_per_group + 1}')
                         plt.show()
                     else:
